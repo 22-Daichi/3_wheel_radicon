@@ -2,7 +2,7 @@
 
 #include <Ps3Controller.h>
 
-#include "InputFrame.hpp"
+#include "Machine/InputFrame.hpp"
 
 namespace Machine {
 

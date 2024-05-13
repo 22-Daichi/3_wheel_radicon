@@ -2,12 +2,10 @@
 #include <hal/gpio_types.h>
 #include <hal/ledc_types.h>
 
-#include "InputModules.hpp"
-#include "Model.hpp"
-#include "MotorDriver.hpp"
-#include "OutputModules.hpp"
-
-using Machine::InputFrame;
+#include "Machine/InputModules.hpp"
+#include "Machine/Logic/Model.hpp"
+#include "Machine/MotorDriver.hpp"
+#include "Machine/OutputModules.hpp"
 
 constexpr auto PIN_ID_MOTOR_1_A = GPIO_NUM_13;
 constexpr auto PIN_ID_MOTOR_2_A = GPIO_NUM_12;

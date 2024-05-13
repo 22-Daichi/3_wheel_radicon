@@ -1,7 +1,7 @@
 #pragma once
 
-#include "InputFrame.hpp"
-#include "OutputFrame.hpp"
+#include "Machine/InputFrame.hpp"
+#include "Machine/OutputFrame.hpp"
 
 namespace Machine {
 

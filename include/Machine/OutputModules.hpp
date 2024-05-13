@@ -1,7 +1,7 @@
 #pragma once
 
-#include "MotorDriver.hpp"
-#include "OutputFrame.hpp"
+#include "Machine/MotorDriver.hpp"
+#include "Machine/OutputFrame.hpp"
 
 namespace Machine {
 
