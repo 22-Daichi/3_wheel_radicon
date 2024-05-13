@@ -12,21 +12,10 @@ private:
     MotorDriver motorC;
 
 public:
-    OutputModules(MotorDriver motorA, MotorDriver motorB, MotorDriver motorC)
-      : motorA(motorA)
-      , motorB(motorB)
-      , motorC(motorC) {}
+    OutputModules(MotorDriver motorA, MotorDriver motorB, MotorDriver motorC);
 
-    auto setup() -> void {
-        motorA.setup();
-        motorB.setup();
-        motorC.setup();
-    }
-    auto write(OutputFrame output) -> void {
-        motorA.drive(output.motorA);
-        motorB.drive(output.motorB);
-        motorC.drive(output.motorC);
-    }
+    auto setup() -> void;
+    auto write(OutputFrame output) -> void;
 };
 
 }
