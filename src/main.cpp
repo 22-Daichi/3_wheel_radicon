@@ -1,9 +1,12 @@
 #include <Arduino.h>
 #include <Ps3Controller.h>
 
+#include "InputModules.hpp"
 #include "Motordrive.hpp"
 
-Ps3Controller ps3;
+using Machine::InputFrame;
+
+Machine::InputModules inputModules;
 
 constexpr int motorAp = 14;
 constexpr int motorBp = 25;
@@ -23,25 +26,25 @@ Motordrive motorA{motorA1, motorA2, motorAp, pwmch_A};
 Motordrive motorB{motorB1, motorB2, motorBp, pwmch_B};
 Motordrive motorC{motorC1, motorC2, motorCp, pwmch_C};
 
-int controller_x() {
-    return ps3.data.analog.stick.lx * -1.9;
+int controller_x(InputFrame input) {
+    return input.controller.analog.stick.lx * -1.9;
 }
-int controller_y() {
-    return ps3.data.analog.stick.ly * -1.9;
+int controller_y(InputFrame input) {
+    return input.controller.analog.stick.ly * -1.9;
 }
 
-int velocityA() {
-    return controller_x();
+int velocityA(InputFrame input) {
+    return controller_x(input);
 }
-int velocityB() {
-    return (-1 * controller_x() / 2) + (controller_y() * 1.732 / 2);
+int velocityB(InputFrame input) {
+    return (-1 * controller_x(input) / 2) + (controller_y(input) * 1.732 / 2);
 }
-int velocityC() {
-    return (-1 * controller_x() / 2) + (-1 * controller_y() * 1.732 / 2);
+int velocityC(InputFrame input) {
+    return (-1 * controller_x(input) / 2) + (-1 * controller_y(input) * 1.732 / 2);
 }
 
 void setup() {
-    ps3.begin("9c:9c:1f:d0:04:be");
+    inputModules.begin();
     motorA.setup();
     motorB.setup();
     motorC.setup();
@@ -51,19 +54,20 @@ void setup() {
 }
 
 void loop() {
-    int v_a = velocityA();
-    int v_b = velocityB();
-    int v_c = velocityC();
+    auto input = inputModules.read();
+    int v_a = velocityA(input);
+    int v_b = velocityB(input);
+    int v_c = velocityC(input);
 
-    if (ps3.data.button.circle) {
+    if (input.controller.button.circle) {
         v_a += 200;
         v_b += 200;
         v_c += 200;
-    } else if (ps3.data.button.square) {
+    } else if (input.controller.button.square) {
         v_a -= 200;
         v_b -= 200;
         v_c -= 200;
-    } else if (ps3.data.button.cross) {
+    } else if (input.controller.button.cross) {
         v_a = 0;
         v_b = 0;
         v_c = 0;
