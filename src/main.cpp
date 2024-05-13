@@ -32,7 +32,7 @@ void setup() {
 }
 
 void loop() {
-    auto i = input.read();
-    auto o = model.update(i);
+    const auto i = input.read();
+    const auto o = model.update(i);
     output.write(o);
 }

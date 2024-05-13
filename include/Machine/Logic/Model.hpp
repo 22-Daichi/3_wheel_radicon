@@ -12,11 +12,14 @@ private:
     float machineAngle;
 
 public:
+    Model()
+      : machineAngle(0) {}
+
     auto init() -> void {
         machineAngle = 0;
     }
     auto update(Machine::InputFrame input) -> Machine::OutputFrame {
-        auto &c = input.controller;
+        const auto &c = input.controller;
 
         if (c.button.cross) {
             return {0, 0, 0};
