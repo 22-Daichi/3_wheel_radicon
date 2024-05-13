@@ -3,7 +3,6 @@
 auto Machine::Logic::Model::init() -> void {
     machineAngle = 0;
 }
-
 auto Machine::Logic::Model::update(Machine::InputFrame in) -> Machine::OutputFrame {
     const auto &c = in.controller;
 
