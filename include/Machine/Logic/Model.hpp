@@ -18,8 +18,8 @@ public:
     auto init() -> void {
         machineAngle = 0;
     }
-    auto update(Machine::InputFrame input) -> Machine::OutputFrame {
-        const auto &c = input.controller;
+    auto update(Machine::InputFrame in) -> Machine::OutputFrame {
+        const auto &c = in.controller;
 
         if (c.button.cross) {
             return {0, 0, 0};
@@ -29,11 +29,11 @@ public:
         int y = c.analog.stick.ly * -1.9;
         int omega = c.button.circle ? 200 : c.button.square ? -200 : 0;
 
-        Machine::OutputFrame output;
-        output.motorA = x * cos(-machineAngle) * y * sin(-machineAngle) + omega;
-        output.motorB = x * cos(-machineAngle + 2 * M_PI / 3) + y * sin(-machineAngle + 2 * M_PI / 3) + omega;
-        output.motorC = x * cos(-machineAngle - 2 * M_PI / 3) + y * sin(-machineAngle - 2 * M_PI / 3) + omega;
-        return output;
+        Machine::OutputFrame out;
+        out.motorA = x * cos(-machineAngle) * y * sin(-machineAngle) + omega;
+        out.motorB = x * cos(-machineAngle + 2 * M_PI / 3) + y * sin(-machineAngle + 2 * M_PI / 3) + omega;
+        out.motorC = x * cos(-machineAngle - 2 * M_PI / 3) + y * sin(-machineAngle - 2 * M_PI / 3) + omega;
+        return out;
     }
 };
 
