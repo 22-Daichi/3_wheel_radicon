@@ -27,7 +27,7 @@ auto model = Machine::Logic::Model{};
 
 void setup() {
     model.init();
-    input.begin();
+    input.setup();
     output.setup();
 }
 
