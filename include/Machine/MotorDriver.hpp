@@ -1,6 +1,7 @@
 #pragma once
 
-#include <Arduino.h>
+#include <esp32-hal-gpio.h>
+#include <esp32-hal-ledc.h>
 
 class MotorDriver {
 private:

@@ -1,24 +1,22 @@
-#include <Ps3Controller.h>
-#include <hal/gpio_types.h>
-#include <hal/ledc_types.h>
+#include <Arduino.h>
 
 #include "Machine/InputModules.hpp"
 #include "Machine/Logic/Model.hpp"
 #include "Machine/MotorDriver.hpp"
 #include "Machine/OutputModules.hpp"
 
-constexpr auto PIN_ID_MOTOR_1_A = GPIO_NUM_13;
-constexpr auto PIN_ID_MOTOR_2_A = GPIO_NUM_12;
-constexpr auto PIN_ID_MOTOR_PWM_A = GPIO_NUM_14;
-constexpr auto CHANNEL_ID_MOTOR_A = LEDC_CHANNEL_0;
-constexpr auto PIN_ID_MOTOR_1_B = GPIO_NUM_27;
-constexpr auto PIN_ID_MOTOR_2_B = GPIO_NUM_26;
-constexpr auto PIN_ID_MOTOR_PWM_B = GPIO_NUM_25;
-constexpr auto CHANNEL_ID_MOTOR_B = LEDC_CHANNEL_1;
-constexpr auto PIN_ID_MOTOR_1_C = GPIO_NUM_3;
-constexpr auto PIN_ID_MOTOR_2_C = GPIO_NUM_21;
-constexpr auto PIN_ID_MOTOR_PWM_C = GPIO_NUM_5;
-constexpr auto CHANNEL_ID_MOTOR_C = LEDC_CHANNEL_2;
+constexpr uint8_t PIN_ID_MOTOR_1_A = 13;
+constexpr uint8_t PIN_ID_MOTOR_2_A = 12;
+constexpr uint8_t PIN_ID_MOTOR_PWM_A = 14;
+constexpr uint8_t CHANNEL_ID_MOTOR_A = 0;
+constexpr uint8_t PIN_ID_MOTOR_1_B = 27;
+constexpr uint8_t PIN_ID_MOTOR_2_B = 26;
+constexpr uint8_t PIN_ID_MOTOR_PWM_B = 25;
+constexpr uint8_t CHANNEL_ID_MOTOR_B = 1;
+constexpr uint8_t PIN_ID_MOTOR_1_C = 3;
+constexpr uint8_t PIN_ID_MOTOR_2_C = 21;
+constexpr uint8_t PIN_ID_MOTOR_PWM_C = 5;
+constexpr uint8_t CHANNEL_ID_MOTOR_C = 2;
 
 auto inputModules = Machine::InputModules{};
 auto outputModules =
