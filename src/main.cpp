@@ -26,9 +26,9 @@ auto output = Machine::OutputModules{
 auto model = Machine::Logic::Model{};
 
 void setup() {
-    model.init();
     input.setup();
     output.setup();
+    model.init();
 }
 
 void loop() {
