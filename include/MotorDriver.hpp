@@ -2,7 +2,7 @@
 
 #include <Arduino.h>
 
-class MotorDrive {
+class MotorDriver {
 private:
     int pinId1;
     int pinId2;
@@ -10,7 +10,7 @@ private:
     int channelId;
 
 public:
-    MotorDrive(int pinId1, int pinId2, int pinIdPwm, int channelId)
+    MotorDriver(int pinId1, int pinId2, int pinIdPwm, int channelId)
       : pinId1(pinId1)
       , pinId2(pinId2)
       , pinIdPwm(pinIdPwm)

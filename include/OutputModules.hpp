@@ -1,18 +1,18 @@
 #pragma once
 
-#include "MotorDrive.hpp"
+#include "MotorDriver.hpp"
 #include "OutputFrame.hpp"
 
 namespace Machine {
 
 class OutputModules {
 private:
-    MotorDrive motorA;
-    MotorDrive motorB;
-    MotorDrive motorC;
+    MotorDriver motorA;
+    MotorDriver motorB;
+    MotorDriver motorC;
 
 public:
-    OutputModules(MotorDrive motorA, MotorDrive motorB, MotorDrive motorC)
+    OutputModules(MotorDriver motorA, MotorDriver motorB, MotorDriver motorC)
       : motorA(motorA)
       , motorB(motorB)
       , motorC(motorC) {}
