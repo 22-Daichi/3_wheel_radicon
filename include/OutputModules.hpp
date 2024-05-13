@@ -1,18 +1,18 @@
 #pragma once
 
-#include "Motordrive.hpp"
+#include "MotorDrive.hpp"
 #include "OutputFrame.hpp"
 
 namespace Machine {
 
 class OutputModules {
 private:
-    Motordrive motorA;
-    Motordrive motorB;
-    Motordrive motorC;
+    MotorDrive motorA;
+    MotorDrive motorB;
+    MotorDrive motorC;
 
 public:
-    OutputModules(Motordrive motorA, Motordrive motorB, Motordrive motorC)
+    OutputModules(MotorDrive motorA, MotorDrive motorB, MotorDrive motorC)
       : motorA(motorA)
       , motorB(motorB)
       , motorC(motorC) {}
@@ -23,9 +23,9 @@ public:
         motorC.setup();
     }
     auto write(OutputFrame output) -> void {
-        motorA.DRIVE(output.motorA);
-        motorB.DRIVE(output.motorB);
-        motorC.DRIVE(output.motorC);
+        motorA.drive(output.motorA);
+        motorB.drive(output.motorB);
+        motorC.drive(output.motorC);
     }
 };
 

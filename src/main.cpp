@@ -4,7 +4,7 @@
 
 #include "InputModules.hpp"
 #include "Model.hpp"
-#include "Motordrive.hpp"
+#include "MotorDrive.hpp"
 #include "OutputModules.hpp"
 
 using Machine::InputFrame;
@@ -24,9 +24,9 @@ constexpr auto CHANNEL_ID_MOTOR_C = LEDC_CHANNEL_2;
 
 auto inputModules = Machine::InputModules{};
 auto outputModules =
-  Machine::OutputModules{Motordrive{PIN_ID_MOTOR_1_A, PIN_ID_MOTOR_2_A, PIN_ID_MOTOR_PWM_A, CHANNEL_ID_MOTOR_A},
-                         Motordrive{PIN_ID_MOTOR_1_B, PIN_ID_MOTOR_2_B, PIN_ID_MOTOR_PWM_B, CHANNEL_ID_MOTOR_B},
-                         Motordrive{PIN_ID_MOTOR_1_C, PIN_ID_MOTOR_2_C, PIN_ID_MOTOR_PWM_C, CHANNEL_ID_MOTOR_C}};
+  Machine::OutputModules{MotorDrive{PIN_ID_MOTOR_1_A, PIN_ID_MOTOR_2_A, PIN_ID_MOTOR_PWM_A, CHANNEL_ID_MOTOR_A},
+                         MotorDrive{PIN_ID_MOTOR_1_B, PIN_ID_MOTOR_2_B, PIN_ID_MOTOR_PWM_B, CHANNEL_ID_MOTOR_B},
+                         MotorDrive{PIN_ID_MOTOR_1_C, PIN_ID_MOTOR_2_C, PIN_ID_MOTOR_PWM_C, CHANNEL_ID_MOTOR_C}};
 auto model = Machine::Logic::Model{};
 
 void setup() {

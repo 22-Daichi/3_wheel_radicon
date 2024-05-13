@@ -2,31 +2,45 @@
 
 #include <Arduino.h>
 
-struct MotorDrive {
-    int motornumber1;
-    int motornumber2;
-    int motorpwm;
-    int pwmch;
+class MotorDrive {
+private:
+    int pinId1;
+    int pinId2;
+    int pinIdPwm;
+    int channelId;
 
-    void setup() {
-        pinMode(motornumber1, OUTPUT);
-        pinMode(motornumber2, OUTPUT);
-        ledcAttachPin(motorpwm, pwmch);
-        ledcSetup(pwmch, 12800, 8);
+public:
+    MotorDrive(int pinId1, int pinId2, int pinIdPwm, int channelId)
+      : pinId1(pinId1)
+      , pinId2(pinId2)
+      , pinIdPwm(pinIdPwm)
+      , channelId(channelId) {}
+
+    auto setup() -> void {
+        pinMode(pinId1, OUTPUT);
+        pinMode(pinId2, OUTPUT);
+        ledcAttachPin(pinIdPwm, channelId);
+        ledcSetup(channelId, 12800, 8);
+        stop();
     }
-
-    void DRIVE(int pwmvalue) {
+    auto drive(int pwmvalue) -> void {
         if (pwmvalue > 0) {
-            digitalWrite(motornumber1, 1);
-            digitalWrite(motornumber2, 0);
-            ledcWrite(pwmch, pwmvalue);
+            digitalWrite(pinId1, 1);
+            digitalWrite(pinId2, 0);
+            ledcWrite(channelId, pwmvalue);
         } else if (pwmvalue < 0) {
-            digitalWrite(motornumber1, 0);
-            digitalWrite(motornumber2, 1);
-            ledcWrite(pwmch, -pwmvalue);
+            digitalWrite(pinId1, 0);
+            digitalWrite(pinId2, 1);
+            ledcWrite(channelId, -pwmvalue);
         } else {
-            digitalWrite(motornumber1, 1);
-            digitalWrite(motornumber2, 1);
+            digitalWrite(pinId1, 1);
+            digitalWrite(pinId2, 1);
+            ledcWrite(channelId, 255);
         }
+    }
+    auto stop() -> void {
+        digitalWrite(pinId1, 0);
+        digitalWrite(pinId2, 0);
+        ledcWrite(channelId, 0);
     }
 };
