@@ -1,36 +1,59 @@
 #pragma once
 
-#include "Ps3Controller.h"
+#include "Input.hpp"
+#include "Output.hpp"
 
-struct Output {
-    int motorA;
-    int motorB;
-    int motorC;
-};
+// 車輪の配置と正の向き
+// +-------------+
+// |   正の向き  |
+// |     <--     |
+// |      A      |
+// |    /   \    |
+// |  B ----- C  |
+// +-------------+
+// ※B, Cの正の向きはそれぞれAの正の向きを±120度ずらしたもの
 
-Output inputToOutput(ps3_t ps3Data) {
-    const float angleOffsetA = 0.0;
-    const float angleOffsetB = 2 * M_PI / 3.0;
-    const float angleOffsetC = -2 * M_PI / 3.0;
+Output inputToOutput(Input input) {
+    // 車輪の配置から、各車輪のx軸に対する角度は以下の通りになる。(反時計回りを正とする)
+    const float angleOffsetA = M_PI;        // 180度
+    const float angleOffsetB = -M_PI / 3.0; // -60度
+    const float angleOffsetC = M_PI / 3.0;  // 60度
 
-    if (ps3Data.button.cross) {
-        return {0, 0, 0};
+    // 各モータへの出力を決める変数。この中身に適当な値を代入し、最後にreturnする。
+    Output output;
+
+    // xボタンが押されている場合は停止
+    if (input.cross) {
+        output.motorA = 0;
+        output.motorB = 0;
+        output.motorC = 0;
+        return output;
     }
 
-    int x = ps3Data.analog.stick.lx * -1.9;
-    int y = ps3Data.analog.stick.ly * -1.9;
-    int omega = 0;
-    if (ps3Data.button.circle) {
-        omega = 200;
+    // x, y: 並進方向に移動させたい量
+    int x = input.x;
+    int y = input.y;
+
+    // rotation: 旋回させたい量
+    int rotation;
+    if (input.circle) {
+        // oボタンが押されている場合は右回りに旋回
+        rotation = 200;
     }
-    else if (ps3Data.button.square) {
-        omega = -200;
+    else if (input.square) {
+        // □ボタンが押されている場合は左回りに旋回
+        rotation = -200;
+    }
+    else {
+        // それ以外の場合は旋回させない
+        rotation = 0;
     }
 
-    Output output = {
-      x * cos(angleOffsetA) + y * sin(angleOffsetA) + omega,
-      x * cos(angleOffsetB) + y * sin(angleOffsetB) + omega,
-      x * cos(angleOffsetC) + y * sin(angleOffsetC) + omega,
-    };
+    // 各モータへの出力を計算
+    output.motorA = x * cos(angleOffsetA) + y * sin(angleOffsetA) + rotation;
+    output.motorB = x * cos(angleOffsetB) + y * sin(angleOffsetB) + rotation;
+    output.motorC = x * cos(angleOffsetC) + y * sin(angleOffsetC) + rotation;
+
+    // 各モータへの出力をreturn
     return output;
 }

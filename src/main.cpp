@@ -34,7 +34,8 @@ void setup() {
 }
 
 void loop() {
-    Output output = inputToOutput(Ps3.data);
+    Input input = getInput();
+    Output output = inputToOutput(input);
     motorA.DRIVE(output.motorA);
     motorB.DRIVE(output.motorB);
     motorC.DRIVE(output.motorC);
