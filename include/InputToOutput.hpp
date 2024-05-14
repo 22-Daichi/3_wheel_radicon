@@ -14,7 +14,7 @@
 // ※B, Cの正の向きはそれぞれAの正の向きを±120度ずらしたもの
 
 Output inputToOutput(Input input) {
-    // 車輪の配置から、各車輪のx軸に対する角度は以下の通りになる。(反時計回りを正とする)
+    // 各車輪のx軸に対する角度 (反時計回りを正とする)
     const float angleOffsetA = M_PI;        // 180度
     const float angleOffsetB = -M_PI / 3.0; // -60度
     const float angleOffsetC = M_PI / 3.0;  // 60度
