@@ -4,6 +4,16 @@
 
 本プログラムの`main.cpp`内の`loop()`の実装は以下のようになっています。
 
+```cpp
+void loop() {
+    Input input = getInput();
+    Output output = inputToOutput(input);
+    motorA.drive(output.motorA);
+    motorB.drive(output.motorB);
+    motorC.drive(output.motorC);
+}
+```
+
 ```mermaid
 
 ---
