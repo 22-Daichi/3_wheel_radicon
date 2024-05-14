@@ -30,9 +30,9 @@ Output inputToOutput(Input input) {
     // input.triangle: コントローラの△ボタンが押されているかどうか
 
     // outputの各値の意味
-    // output.motorA: モータAへの出力
-    // output.motorB: モータBへの出力
-    // output.motorC: モータCへの出力
+    // output.motorA: モータAへの出力 (0~255)
+    // output.motorB: モータBへの出力 (0~255)
+    // output.motorC: モータCへの出力 (0~255)
 
     // x, y: 並進方向に移動させたい量
     int x = input.x;
