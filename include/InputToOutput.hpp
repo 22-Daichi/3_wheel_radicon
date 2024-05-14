@@ -22,7 +22,8 @@ Output inputToOutput(ps3_t ps3Data) {
     int omega = 0;
     if (ps3Data.button.circle) {
         omega = 200;
-    } else if (ps3Data.button.square) {
+    }
+    else if (ps3Data.button.square) {
         omega = -200;
     }
 
