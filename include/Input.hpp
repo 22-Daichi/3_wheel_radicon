@@ -11,7 +11,7 @@ struct Input {
     bool triangle;
 };
 
-auto getInput() -> Input {
+Input getInput() {
     Input in;
     in.x = Ps3.data.analog.stick.lx * 1.9;
     in.y = Ps3.data.analog.stick.ly * 1.9;
