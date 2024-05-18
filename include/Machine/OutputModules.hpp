@@ -1,6 +1,7 @@
 #pragma once
 
-#include "Machine/Logic/Output.hpp"
+#include "Machine/Comptime/AssignedMap.hpp"
+#include "Machine/DataStructure/Output.hpp"
 #include "Machine/MotorDriver.hpp"
 
 namespace Machine {
@@ -12,10 +13,11 @@ private:
     MotorDriver motorC;
 
 public:
+    OutputModules();
     OutputModules(MotorDriver motorA, MotorDriver motorB, MotorDriver motorC);
 
     auto setup() -> void;
-    auto write(Logic::Output output) -> void;
+    auto write(DataStructure::Output output) -> void;
 };
 
 }

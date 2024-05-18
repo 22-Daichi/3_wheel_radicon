@@ -1,23 +1,24 @@
 #pragma once
 
-#include "Machine/Logic/Input.hpp"
-#include "Machine/Logic/Output.hpp"
+#include "Machine/DataStructure/Input.hpp"
+#include "Machine/DataStructure/Output.hpp"
+#include "Machine/DataStructure/State.hpp"
 
-namespace Machine::Logic {
+namespace Machine {
 
 class Model {
 private:
-    float machineAngle;
-
-public:
     inline static constexpr float ANGLE_OFFSET_A = M_PI;
     inline static constexpr float ANGLE_OFFSET_B = -M_PI / 3;
     inline static constexpr float ANGLE_OFFSET_C = M_PI / 3;
 
+    DataStructure::State state;
+
+public:
     Model() = default;
 
     auto init() -> void;
-    auto update(Machine::Logic::Input) -> Machine::Logic::Output;
+    auto update(DataStructure::Input) -> DataStructure::Output;
 };
 
 }

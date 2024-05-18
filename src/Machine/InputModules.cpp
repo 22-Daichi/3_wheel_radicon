@@ -1,6 +1,6 @@
 #include "Machine/InputModules.hpp"
 
-using Machine::Logic::Input;
+using Machine::DataStructure::Input;
 
 auto Machine::InputModules::setup() -> bool {
     constexpr std::array<char, 18> ADDRESS = {"9c:9c:1f:d0:04:be"};

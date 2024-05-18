@@ -1,12 +1,12 @@
-#include "Machine/Logic/Model.hpp"
+#include "Machine/Model.hpp"
 
-using Machine::Logic::Input;
-using Machine::Logic::Output;
+using Machine::DataStructure::Input;
+using Machine::DataStructure::Output;
 
-auto Machine::Logic::Model::init() -> void {
-    machineAngle = 0;
+auto Machine::Model::init() -> void {
+    state.machineAngle = 0;
 }
-auto Machine::Logic::Model::update(Input input) -> Output {
+auto Machine::Model::update(Input input) -> Output {
     const auto &c = input.controller;
 
     if (c.button.cross) {
@@ -18,8 +18,11 @@ auto Machine::Logic::Model::update(Input input) -> Output {
     const int omega = c.button.circle ? 200 : c.button.square ? -200 : 0;
 
     Output output;
-    output.motorA = x * cos(-machineAngle + ANGLE_OFFSET_A) * y * sin(-machineAngle + ANGLE_OFFSET_A) + omega;
-    output.motorB = x * cos(-machineAngle + ANGLE_OFFSET_B) + y * sin(-machineAngle + ANGLE_OFFSET_B) + omega;
-    output.motorC = x * cos(-machineAngle + ANGLE_OFFSET_C) + y * sin(-machineAngle + ANGLE_OFFSET_C) + omega;
+    output.motorA =
+      x * cos(-state.machineAngle + ANGLE_OFFSET_A) * y * sin(-state.machineAngle + ANGLE_OFFSET_A) + omega;
+    output.motorB =
+      x * cos(-state.machineAngle + ANGLE_OFFSET_B) + y * sin(-state.machineAngle + ANGLE_OFFSET_B) + omega;
+    output.motorC =
+      x * cos(-state.machineAngle + ANGLE_OFFSET_C) + y * sin(-state.machineAngle + ANGLE_OFFSET_C) + omega;
     return output;
 }

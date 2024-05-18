@@ -1,6 +1,6 @@
 #pragma once
 
-namespace Machine::Logic {
+namespace Machine::DataStructure {
 
 struct Output {
     int motorA;
