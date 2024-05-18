@@ -2,6 +2,7 @@
 
 using Machine::DataStructure::Input;
 using Machine::DataStructure::Output;
+using Machine::DataStructure::State;
 
 Machine::Model::Model(DataStructure::State state)
   : state(state) {}
@@ -9,11 +10,17 @@ Machine::Model::Model(DataStructure::State state)
 auto Machine::Model::init() -> void {
     state.machineAngle = 0;
 }
-auto Machine::Model::update(Input input) -> Output {
+auto Machine::Model::update(const Input &input) -> Output {
+    const auto [s, output] = update(state, input);
+    state = s;
+    return output;
+}
+
+auto Machine::Model::update(const State &state, const Input &input) -> std::pair<State, Output> {
     const auto &c = input.controller;
 
     if (c.button.cross) {
-        return Output{0, 0, 0};
+        return {state, Output{0, 0, 0}};
     }
 
     const int x = c.analog.stick.lx * 1.9;
@@ -27,5 +34,5 @@ auto Machine::Model::update(Input input) -> Output {
       x * cos(-state.machineAngle + ANGLE_OFFSET_B) + y * sin(-state.machineAngle + ANGLE_OFFSET_B) + omega;
     output.motorC =
       x * cos(-state.machineAngle + ANGLE_OFFSET_C) + y * sin(-state.machineAngle + ANGLE_OFFSET_C) + omega;
-    return output;
+    return {state, output};
 }

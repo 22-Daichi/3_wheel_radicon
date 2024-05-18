@@ -17,7 +17,9 @@ public:
     Model(DataStructure::State state);
 
     auto init() -> void;
-    auto update(DataStructure::Input) -> DataStructure::Output;
+    auto update(const DataStructure::Input &) -> DataStructure::Output;
+    static auto update(const DataStructure::State &,
+                       const DataStructure::Input &) -> std::pair<DataStructure::State, DataStructure::Output>;
 };
 
 }
