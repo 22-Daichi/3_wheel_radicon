@@ -3,8 +3,9 @@
 using Machine::DataStructure::Input;
 
 auto Machine::InputModules::setup() -> bool {
-    constexpr std::array<char, 18> ADDRESS = {"9c:9c:1f:d0:04:be"};
-    return controller.begin(ADDRESS.data());
+    using Machine::Comptime::PS3_CONTROLLER_ADDRESS;
+
+    return controller.begin(PS3_CONTROLLER_ADDRESS.data());
 }
 auto Machine::InputModules::read() -> Input {
     Input frame;

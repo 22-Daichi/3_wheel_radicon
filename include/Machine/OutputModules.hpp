@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Machine/Comptime/AssignedMap.hpp"
+#include "Machine/Comptime.hpp"
 #include "Machine/DataStructure/Output.hpp"
 #include "Machine/MotorDriver.hpp"
 

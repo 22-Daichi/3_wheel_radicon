@@ -2,6 +2,7 @@
 
 #include <Ps3Controller.h>
 
+#include "Machine/Comptime.hpp"
 #include "Machine/DataStructure/Input.hpp"
 
 namespace Machine {
