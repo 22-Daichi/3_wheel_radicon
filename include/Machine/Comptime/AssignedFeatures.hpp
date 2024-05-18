@@ -4,9 +4,9 @@
 
 namespace Machine::Comptime {
 
-class AssignedMap {
+class AssignedFeatures {
 public:
-    AssignedMap() = delete;
+    AssignedFeatures() = delete;
 
     inline static constexpr uint8_t PIN_ID_MOTOR_1_A = 13;
     inline static constexpr uint8_t PIN_ID_MOTOR_2_A = 12;
