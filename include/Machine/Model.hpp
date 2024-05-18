@@ -16,6 +16,7 @@ private:
 
 public:
     Model() = default;
+    Model(DataStructure::State state);
 
     auto init() -> void;
     auto update(DataStructure::Input) -> DataStructure::Output;

@@ -3,6 +3,9 @@
 using Machine::DataStructure::Input;
 using Machine::DataStructure::Output;
 
+Machine::Model::Model(DataStructure::State state)
+  : state(state) {}
+
 auto Machine::Model::init() -> void {
     state.machineAngle = 0;
 }
