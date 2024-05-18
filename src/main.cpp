@@ -23,20 +23,25 @@ Motordrive motorB{motorB1, motorB2, motorBp, pwmch_B};
 Motordrive motorC{motorC1, motorC2, motorCp, pwmch_C};
 
 void setup() {
-    Serial.begin(115200);
-    Ps3.begin("9c:9c:1f:d0:04:be");
-    motorA.setup();
-    motorB.setup();
-    motorC.setup();
-    motorA.DRIVE(0);
-    motorB.DRIVE(0);
-    motorC.DRIVE(0);
+    Serial.begin(115200);           // PCとの通信を開始
+    Ps3.begin("9c:9c:1f:d0:04:be"); // Ps3コントローラとの通信を開始
+    motorA.setup();                 // motorAについて、最初に一回だけ行う処理を実行
+    motorB.setup();                 // motorBについて、最初に一回だけ行う処理を実行
+    motorC.setup();                 // motorCについて、最初に一回だけ行う処理を実行
+    motorA.DRIVE(0);                // motorAを停止 (暴走防止)
+    motorB.DRIVE(0);                // motorBを停止 (暴走防止)
+    motorC.DRIVE(0);                // motorCを停止 (暴走防止)
 }
 
 void loop() {
+    // コントローラからの入力を取得
     Input input = getInput();
+    // 入力を元にモータへの出力を計算
     Output output = inputToOutput(input);
+    // モータへの出力を反映
     motorA.DRIVE(output.motorA);
     motorB.DRIVE(output.motorB);
     motorC.DRIVE(output.motorC);
+    // 10ms待機
+    delay(10);
 }

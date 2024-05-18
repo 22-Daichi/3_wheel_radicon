@@ -2,6 +2,7 @@
 
 #include "Ps3Controller.h"
 
+// コントローラからの入力 (左スティックと右側の4つのボタンのみ)
 struct Input {
     int x;
     int y;
