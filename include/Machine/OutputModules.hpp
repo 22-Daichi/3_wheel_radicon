@@ -1,7 +1,7 @@
 #pragma once
 
+#include "Machine/Logic/Output.hpp"
 #include "Machine/MotorDriver.hpp"
-#include "Machine/OutputFrame.hpp"
 
 namespace Machine {
 
@@ -15,7 +15,7 @@ public:
     OutputModules(MotorDriver motorA, MotorDriver motorB, MotorDriver motorC);
 
     auto setup() -> void;
-    auto write(OutputFrame output) -> void;
+    auto write(Logic::Output output) -> void;
 };
 
 }

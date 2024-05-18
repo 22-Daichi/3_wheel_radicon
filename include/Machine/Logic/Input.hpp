@@ -2,9 +2,9 @@
 
 #include <Ps3Controller.h>
 
-namespace Machine {
+namespace Machine::Logic {
 
-struct InputFrame {
+struct Input {
     ps3_t controller;
 };
 

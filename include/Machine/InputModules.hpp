@@ -2,7 +2,7 @@
 
 #include <Ps3Controller.h>
 
-#include "Machine/InputFrame.hpp"
+#include "Machine/Logic/Input.hpp"
 
 namespace Machine {
 
@@ -14,7 +14,7 @@ public:
     InputModules() = default;
 
     auto setup() -> bool;
-    auto read() -> InputFrame;
+    auto read() -> Logic::Input;
 };
 
 }

@@ -1,11 +1,9 @@
 #pragma once
 
-#include "Machine/InputFrame.hpp"
-#include "Machine/OutputFrame.hpp"
+#include "Machine/Logic/Input.hpp"
+#include "Machine/Logic/Output.hpp"
 
-namespace Machine {
-
-namespace Logic {
+namespace Machine::Logic {
 
 class Model {
 private:
@@ -19,9 +17,7 @@ public:
     Model() = default;
 
     auto init() -> void;
-    auto update(Machine::InputFrame in) -> Machine::OutputFrame;
+    auto update(Machine::Logic::Input) -> Machine::Logic::Output;
 };
-
-}
 
 }

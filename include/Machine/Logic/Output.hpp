@@ -1,8 +1,8 @@
 #pragma once
 
-namespace Machine {
+namespace Machine::Logic {
 
-struct OutputFrame {
+struct Output {
     int motorA;
     int motorB;
     int motorC;
