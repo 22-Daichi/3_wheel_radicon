@@ -17,6 +17,8 @@ auto Machine::Model::update(const Input &input) -> Output {
 }
 
 auto Machine::Model::update(const State &state, const Input &input) -> std::pair<State, Output> {
+    using namespace Machine::Comptime::DesignedParameters;
+
     const auto &c = input.controller;
 
     if (c.button.cross) {

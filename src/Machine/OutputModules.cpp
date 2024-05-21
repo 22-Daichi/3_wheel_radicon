@@ -1,21 +1,12 @@
 #include "Machine/OutputModules.hpp"
 
-using Machine::Comptime::AssignedFeatures;
+using namespace Machine::Comptime::AssignedFeatures;
 using Machine::DataStructure::Output;
 
 Machine::OutputModules::OutputModules()
-  : motorA{MotorDriver{AssignedFeatures::PIN_ID_MOTOR_1_A,
-                       AssignedFeatures::PIN_ID_MOTOR_2_A,
-                       AssignedFeatures::PIN_ID_MOTOR_PWM_A,
-                       AssignedFeatures::CHANNEL_ID_MOTOR_A}}
-  , motorB{MotorDriver{AssignedFeatures::PIN_ID_MOTOR_1_B,
-                       AssignedFeatures::PIN_ID_MOTOR_2_B,
-                       AssignedFeatures::PIN_ID_MOTOR_PWM_B,
-                       AssignedFeatures::CHANNEL_ID_MOTOR_B}}
-  , motorC{MotorDriver{AssignedFeatures::PIN_ID_MOTOR_1_C,
-                       AssignedFeatures::PIN_ID_MOTOR_2_C,
-                       AssignedFeatures::PIN_ID_MOTOR_PWM_C,
-                       AssignedFeatures::CHANNEL_ID_MOTOR_C}} {}
+  : motorA{MotorDriver{PIN_ID_MOTOR_1_A, PIN_ID_MOTOR_2_A, PIN_ID_MOTOR_PWM_A, CHANNEL_ID_MOTOR_A}}
+  , motorB{MotorDriver{PIN_ID_MOTOR_1_B, PIN_ID_MOTOR_2_B, PIN_ID_MOTOR_PWM_B, CHANNEL_ID_MOTOR_B}}
+  , motorC{MotorDriver{PIN_ID_MOTOR_1_C, PIN_ID_MOTOR_2_C, PIN_ID_MOTOR_PWM_C, CHANNEL_ID_MOTOR_C}} {}
 
 Machine::OutputModules::OutputModules(MotorDriver motorA, MotorDriver motorB, MotorDriver motorC)
   : motorA{motorA}

@@ -2,7 +2,8 @@
 
 #include <array>
 
-#include "Comptime/AssignedFeatures.hpp"
+#include "Machine/Comptime/AssignedFeatures.hpp"
+#include "Machine/Comptime/DesignedParameters.hpp"
 
 namespace Machine::Comptime {
 
