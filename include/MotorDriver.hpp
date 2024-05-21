@@ -1,6 +1,6 @@
 #include <Arduino.h>
 
-struct Motordrive {
+struct MotorDrive {
     int motornumber1;
     int motornumber2;
     int motorpwm;
