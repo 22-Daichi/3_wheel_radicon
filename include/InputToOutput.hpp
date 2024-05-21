@@ -40,11 +40,11 @@ Output inputToOutput(Input input) {
     int rotation;
     if (input.circle) {
         // 〇ボタンが押されている場合は右回りに旋回
-        rotation = 200;
+        rotation = -200;
     }
     else if (input.square) {
         // □ボタンが押されている場合は左回りに旋回
-        rotation = -200;
+        rotation = 200;
     }
     else {
         // それ以外の場合は旋回させない
