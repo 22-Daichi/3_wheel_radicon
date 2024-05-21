@@ -1,7 +1,7 @@
 #include <Arduino.h>
 #include <Ps3Controller.h>
 
-#include "Motordrive.hpp"
+#include "MotorDriver.hpp"
 
 constexpr int motorAp = 14;
 constexpr int motorBp = 25;
@@ -17,9 +17,9 @@ constexpr int pwmch_A = 0;
 constexpr int pwmch_B = 1;
 constexpr int pwmch_C = 2;
 
-Motordrive motorA{motorA1, motorA2, motorAp, pwmch_A};
-Motordrive motorB{motorB1, motorB2, motorBp, pwmch_B};
-Motordrive motorC{motorC1, motorC2, motorCp, pwmch_C};
+MotorDrive motorA{motorA1, motorA2, motorAp, pwmch_A};
+MotorDrive motorB{motorB1, motorB2, motorBp, pwmch_B};
+MotorDrive motorC{motorC1, motorC2, motorCp, pwmch_C};
 
 int controller_x() {
     return Ps3.data.analog.stick.lx * -1.9;
