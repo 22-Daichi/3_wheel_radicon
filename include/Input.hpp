@@ -15,9 +15,9 @@ struct Input {
 Input getInput() {
     Input in;
     // 左スティックのx軸方向の値を-255~255に変換
-    in.x = map(Ps3.data.analog.stick.lx, -127, 127, -255, 255);
+    in.x = constrain(map(Ps3.data.analog.stick.lx, -127, 127, -255, 255), -255, 255);
     // 左スティックのy軸方向の値を-255~255に変換
-    in.y = map(Ps3.data.analog.stick.ly, 127, -127, -255, 255);
+    in.y = constrain(map(Ps3.data.analog.stick.ly, 127, -127, -255, 255), -255, 255);
     in.circle = Ps3.data.button.circle;
     in.square = Ps3.data.button.square;
     in.cross = Ps3.data.button.cross;
