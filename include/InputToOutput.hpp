@@ -5,18 +5,18 @@
 
 // 車輪の配置とAの正の向き
 // +-------------+
-// |     <--     |
+// |  C ----- B  |
+// |    \   /    |
 // |      A      |
-// |    /   \    |
-// |  B ----- C  |
+// |     --->    |
 // +-------------+
 // ※B, Cの正の向きはそれぞれAの正の向きを±120度ずらしたもの
 
 Output inputToOutput(Input input) {
     // 各車輪のx軸に対する角度 (反時計回りを正とする)
-    const float angleOffsetA = M_PI;        // 180度
-    const float angleOffsetB = -M_PI / 3.0; // -60度
-    const float angleOffsetC = M_PI / 3.0;  // 60度
+    const float angleOffsetA = 0;               // 0度
+    const float angleOffsetB = 2 * M_PI / 3.0;  // 120度
+    const float angleOffsetC = -2 * M_PI / 3.0; // -120度
     // 各モータへの出力を決める変数。この中身に適当な値を代入し、最後にreturnする。
     Output output;
 

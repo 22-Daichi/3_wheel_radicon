@@ -4,18 +4,18 @@
 #include "InputToOutput.hpp"
 #include "MotorDriver.hpp"
 
-const int motorA1 = 13; // IN1
-const int motorA2 = 12; // IN2
+const int motorA1 = 12; // IN1
+const int motorA2 = 13; // IN2
 const int motorAp = 14; // PWM
 const int pwmch_A = 0;  // PWMチャンネル
 
-const int motorB1 = 27; // IN1
-const int motorB2 = 26; // IN2
+const int motorB1 = 26; // IN1
+const int motorB2 = 27; // IN2
 const int motorBp = 25; // PWM
 const int pwmch_B = 1;  // PWMチャンネル
 
-const int motorC1 = 3;  // IN1
-const int motorC2 = 21; // IN2
+const int motorC1 = 21; // IN1
+const int motorC2 = 3;  // IN2
 const int motorCp = 5;  // PWM
 const int pwmch_C = 2;  // PWMチャンネル
 
