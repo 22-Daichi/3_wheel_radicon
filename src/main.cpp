@@ -24,8 +24,6 @@ MotorDrive motorB{motorB1, motorB2, motorBp, pwmch_B};
 MotorDrive motorC{motorC1, motorC2, motorCp, pwmch_C};
 
 void setup() {
-    // PCとの通信を開始
-    Serial.begin(115200);
     // Ps3コントローラとの通信を開始
     Ps3.begin("9c:9c:1f:d0:04:be");
     // 各モータについて、最初に一回だけ行う処理を実行
@@ -41,7 +39,6 @@ void setup() {
 void loop() {
     // コントローラからの入力を取得
     Input input = getInput();
-    Serial.printf("x: %d, y: %d\n", (int)input.x, (int)input.y);
     // 入力を元にモータへの出力を計算
     Output output = inputToOutput(input);
     // モータへの出力を反映
