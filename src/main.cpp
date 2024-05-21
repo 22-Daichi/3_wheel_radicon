@@ -17,4 +17,5 @@ void loop() {
     const auto [s, output] = Machine::Model::update(state, input);
     state = s;
     outputM.write(output);
+    delay(10);
 }
