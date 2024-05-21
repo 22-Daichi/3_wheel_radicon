@@ -10,7 +10,7 @@
 // ※B, Cの正の向きはそれぞれAの正の向きを±120度ずらしたもの
 
 struct Output {
-    int motorA;
-    int motorB;
-    int motorC;
+    int motorA; // モータAへの出力 (-255~255)
+    int motorB; // モータBへの出力 (-255~255)
+    int motorC; // モータCへの出力 (-255~255)
 };

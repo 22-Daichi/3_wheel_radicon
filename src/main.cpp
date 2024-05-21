@@ -41,6 +41,7 @@ void setup() {
 void loop() {
     // コントローラからの入力を取得
     Input input = getInput();
+    Serial.printf("x: %d, y: %d\n", (int)input.x, (int)input.y);
     // 入力を元にモータへの出力を計算
     Output output = inputToOutput(input);
     // モータへの出力を反映

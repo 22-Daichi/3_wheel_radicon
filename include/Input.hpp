@@ -4,18 +4,20 @@
 
 // コントローラからの入力 (左スティックと右側の4つのボタンのみ)
 struct Input {
-    int x;
-    int y;
-    bool circle;
-    bool square;
-    bool cross;
-    bool triangle;
+    int x;         // 左スティックのx軸方向の値 -255~255
+    int y;         // 左スティックのy軸方向の値 -255~255
+    bool circle;   // 〇ボタンが押されているかどうか
+    bool square;   // □ボタンが押されているかどうか
+    bool cross;    // ✕ボタンが押されているかどうか
+    bool triangle; // △ボタンが押されているかどうか
 };
 
 Input getInput() {
     Input in;
-    in.x = Ps3.data.analog.stick.lx * 1.9;
-    in.y = Ps3.data.analog.stick.ly * 1.9;
+    // 左スティックのx軸方向の値を-255~255に変換
+    in.x = map(Ps3.data.analog.stick.lx, -127, 127, -255, 255);
+    // 左スティックのy軸方向の値を-255~255に変換
+    in.y = map(Ps3.data.analog.stick.ly, 127, -127, -255, 255);
     in.circle = Ps3.data.button.circle;
     in.square = Ps3.data.button.square;
     in.cross = Ps3.data.button.cross;
