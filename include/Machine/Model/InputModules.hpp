@@ -5,7 +5,7 @@
 #include "Machine/Comptime.hpp"
 #include "Machine/DataStructure/Input.hpp"
 
-namespace Machine {
+namespace Machine::Model {
 
 class InputModules {
 private:

@@ -2,9 +2,9 @@
 
 #include "Machine/Comptime.hpp"
 #include "Machine/DataStructure/Output.hpp"
-#include "Machine/MotorDriver.hpp"
+#include "Machine/Model/MotorDriver.hpp"
 
-namespace Machine {
+namespace Machine::Model {
 
 class OutputModules {
 private:

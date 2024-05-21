@@ -3,7 +3,7 @@
 #include <esp32-hal-gpio.h>
 #include <esp32-hal-ledc.h>
 
-namespace Machine {
+namespace Machine::Model {
 
 class MotorDriver {
 private:

@@ -4,16 +4,10 @@ using Machine::DataStructure::Input;
 using Machine::DataStructure::Output;
 using Machine::DataStructure::State;
 
-Machine::Model::Model(DataStructure::State state)
-  : state(state) {}
-
-auto Machine::Model::init() -> void {
+auto Machine::Model::initialState() -> State {
+    State state;
     state.machineAngle = 0;
-}
-auto Machine::Model::update(const Input &input) -> Output {
-    const auto [s, output] = update(state, input);
-    state = s;
-    return output;
+    return state;
 }
 
 auto Machine::Model::update(const State &state, const Input &input) -> std::pair<State, Output> {

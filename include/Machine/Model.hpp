@@ -2,21 +2,15 @@
 
 #include "Machine/Comptime/DesignedParameters.hpp"
 #include "Machine/DataStructure.hpp"
+#include "Machine/Model/InputModules.hpp"
+#include "Machine/Model/MotorDriver.hpp"
+#include "Machine/Model/OutputModules.hpp"
 
-namespace Machine {
+namespace Machine::Model {
 
-class Model {
-private:
-    DataStructure::State state;
+auto initialState() -> DataStructure::State;
 
-public:
-    Model() = default;
-    Model(DataStructure::State state);
-
-    auto init() -> void;
-    auto update(const DataStructure::Input &) -> DataStructure::Output;
-    static auto update(const DataStructure::State &,
-                       const DataStructure::Input &) -> std::pair<DataStructure::State, DataStructure::Output>;
-};
+auto update(const DataStructure::State &,
+            const DataStructure::Input &) -> std::pair<DataStructure::State, DataStructure::Output>;
 
 }

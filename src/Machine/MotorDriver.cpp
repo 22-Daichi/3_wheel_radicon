@@ -1,19 +1,22 @@
-#include "Machine/MotorDriver.hpp"
+#include "Machine/Model/MotorDriver.hpp"
 
-Machine::MotorDriver::MotorDriver(const uint8_t pin1, const uint8_t pin2, const uint8_t pinPwm, const uint8_t channel)
+Machine::Model::MotorDriver::MotorDriver(const uint8_t pin1,
+                                         const uint8_t pin2,
+                                         const uint8_t pinPwm,
+                                         const uint8_t channel)
   : pinId1{pin1}
   , pinId2{pin2}
   , pinIdPwm{pinPwm}
   , channelId{channel} {}
 
-auto Machine::MotorDriver::setup() -> void {
+auto Machine::Model::MotorDriver::setup() -> void {
     pinMode(pinId1, OUTPUT);
     pinMode(pinId2, OUTPUT);
     ledcAttachPin(pinIdPwm, channelId);
     ledcSetup(channelId, 12800, 8);
     stop();
 }
-auto Machine::MotorDriver::drive(int pwmValue) -> void {
+auto Machine::Model::MotorDriver::drive(int pwmValue) -> void {
     if (pwmValue > 0) {
         digitalWrite(pinId1, 1);
         digitalWrite(pinId2, 0);
@@ -28,7 +31,7 @@ auto Machine::MotorDriver::drive(int pwmValue) -> void {
         ledcWrite(channelId, 255);
     }
 }
-auto Machine::MotorDriver::stop() -> void {
+auto Machine::Model::MotorDriver::stop() -> void {
     digitalWrite(pinId1, 0);
     digitalWrite(pinId2, 0);
     ledcWrite(channelId, 0);
