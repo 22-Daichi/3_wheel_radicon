@@ -1,7 +1,6 @@
 #include <Arduino.h>
 
-#include "Machine/DataStructure.hpp"
-#include "Machine/Model.hpp"
+#include "Machine.hpp"
 
 auto inputM = Machine::Model::InputModules{};
 auto outputM = Machine::Model::OutputModules{};
