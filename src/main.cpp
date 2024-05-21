@@ -4,19 +4,20 @@
 #include "InputToOutput.hpp"
 #include "MotorDriver.hpp"
 
-constexpr int motorAp = 14;
-constexpr int motorBp = 25;
-constexpr int motorCp = 5;
-constexpr int motorA1 = 13;
-constexpr int motorA2 = 12;
-constexpr int motorB1 = 27; // IN1
-constexpr int motorB2 = 26; // IN2
-constexpr int motorC1 = 3;  // IN1
-constexpr int motorC2 = 21; // IN2
+const int motorA1 = 13; // IN1
+const int motorA2 = 12; // IN2
+const int motorAp = 14; // PWM
+const int pwmch_A = 0;  // PWMチャンネル
 
-constexpr int pwmch_A = 0;
-constexpr int pwmch_B = 1;
-constexpr int pwmch_C = 2;
+const int motorB1 = 27; // IN1
+const int motorB2 = 26; // IN2
+const int motorBp = 25; // PWM
+const int pwmch_B = 1;  // PWMチャンネル
+
+const int motorC1 = 3;  // IN1
+const int motorC2 = 21; // IN2
+const int motorCp = 5;  // PWM
+const int pwmch_C = 2;  // PWMチャンネル
 
 MotorDrive motorA{motorA1, motorA2, motorAp, pwmch_A};
 MotorDrive motorB{motorB1, motorB2, motorBp, pwmch_B};
