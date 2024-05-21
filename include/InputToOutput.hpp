@@ -14,9 +14,9 @@
 
 Output inputToOutput(Input input) {
     // 各車輪のx軸に対する角度 (反時計回りを正とする)
-    const float angleOffsetA = 0;               // 0度
-    const float angleOffsetB = 2 * M_PI / 3.0;  // 120度
-    const float angleOffsetC = -2 * M_PI / 3.0; // -120度
+    const float angleOffsetA = 0;             // 0度
+    const float angleOffsetB = 2 * PI / 3.0;  // 120度
+    const float angleOffsetC = -2 * PI / 3.0; // -120度
     // 各モータへの出力を決める変数。この中身に適当な値を代入し、最後にreturnする。
     Output output;
 
@@ -51,9 +51,9 @@ Output inputToOutput(Input input) {
         rotation = 0;
     }
     // 各モータへの出力を計算
-    output.motorA = x * cos(angleOffsetA) + y * sin(angleOffsetA) + rotation;
-    output.motorB = x * cos(angleOffsetB) + y * sin(angleOffsetB) + rotation;
-    output.motorC = x * cos(angleOffsetC) + y * sin(angleOffsetC) + rotation;
+    output.motorA = x * cos(angleOffsetA) + y * sin(angleOffsetA) + rotation, -255, 255;
+    output.motorB = x * cos(angleOffsetB) + y * sin(angleOffsetB) + rotation, -255, 255;
+    output.motorC = x * cos(angleOffsetC) + y * sin(angleOffsetC) + rotation, -255, 255;
     // ✕ボタンが押されている場合は停止
     if (input.cross) {
         output.motorA = 0;
