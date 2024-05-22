@@ -33,14 +33,33 @@ Output inputToOutput(Input input) {
     // output.motorB: モータBへの出力 (0~255)
     // output.motorC: モータCへの出力 (0~255)
 
-    /*
-        ここを埋めてください。
-        ヒント:
-            - input.x, input.yから機体を進めたい量と方向を求める
-            - その他のinputの値に応じて機体の回転量や特殊な動作を求める
-            - 求めた量からoutput.motorA, output.motorB, output.motorCを決める
-            - それぞれ代入する
-    */
+    // x, y: 並進方向に移動させたい量
+    int x = input.x;
+    int y = input.y;
+    // rotation: 旋回させたい量
+    int rotation;
+    if (input.circle) {
+        // 〇ボタンが押されている場合は右回りに旋回
+        rotation = -127;
+    }
+    else if (input.square) {
+        // □ボタンが押されている場合は左回りに旋回
+        rotation = 127;
+    }
+    else {
+        // それ以外の場合は旋回させない
+        rotation = 0;
+    }
+    // 各モータへの出力を計算
+    output.motorA = x * cos(angleOffsetA) + y * sin(angleOffsetA) + rotation, -255, 255;
+    output.motorB = x * cos(angleOffsetB) + y * sin(angleOffsetB) + rotation, -255, 255;
+    output.motorC = x * cos(angleOffsetC) + y * sin(angleOffsetC) + rotation, -255, 255;
+    // ✕ボタンが押されている場合は停止
+    if (input.cross) {
+        output.motorA = 0;
+        output.motorB = 0;
+        output.motorC = 0;
+    }
 
     // 各モータへの出力をreturn
     return output;
